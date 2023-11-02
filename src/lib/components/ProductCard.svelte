@@ -1,6 +1,7 @@
 <script>
     import ColorSwatch from './ColorSwatch.svelte';
     import ProductImage from './ProductImage.svelte';
+    import {addToCart} from '../stores/cartItems';
 
     export let title;
     export let variants;
@@ -10,6 +11,10 @@
 
     function swatchClicked(index) {
         selectedVariantIndex = index;
+    }
+
+    function addToCartClicked() {
+        addToCart(title, selectedVariant);
     }
 
     $: selectedVariant = variants[selectedVariantIndex];
@@ -33,6 +38,7 @@
 
     <div class="">${selectedVariant.price}</div>
     <div class="">
-        <button class="bg-black text-white p-2">Add to Cart</button>
+        <button on:click={addToCartClicked}
+                class="bg-black text-white p-2">Add to Cart</button>
     </div>
 </div>

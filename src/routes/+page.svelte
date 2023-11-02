@@ -2,9 +2,12 @@
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '../lib/components/Footer.svelte';
 	import PlpPageLayout from '../lib/components/PlpPageLayout.svelte';
+	import Cart from '../lib/components/Cart.svelte';
 
 	let rtl = false;
 	let dir;
+
+	let cartOpen = false;
 
 	function toggleRTL() {
 		rtl = !rtl;
@@ -25,3 +28,4 @@
 	<Footer />
 </div>
 
+<Cart />
