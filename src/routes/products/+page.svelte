@@ -1,8 +1,9 @@
 <script>
-    import ProductCard from './ProductCard.svelte';
-    import { mockProducts } from '../mockProducts';
+    import ProductCard from '../../lib/components/ProductCard.svelte';
 
-    console.log(mockProducts);
+    export let data;
+
+    console.log(data);
 </script>
 
 <main class="grid gap-6 md:[grid-template-columns:250px_auto]">
@@ -11,7 +12,7 @@
         <h1>Products</h1>
 
         <div class="grid gap-6 grid-cols-2 lg:grid-cols-3">
-            {#each mockProducts as product}
+            {#each data.products as product}
                 <ProductCard {...product} />
             {/each}
         </div>
