@@ -3,6 +3,10 @@ import {error} from '@sveltejs/kit';
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
 
+    /*
+     * Example of fetching live data via an API, using URL parameter
+     */
+
     const id = params.id;
 
     try {
