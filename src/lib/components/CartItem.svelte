@@ -19,7 +19,7 @@
         <h3 class="font-bold">{title}</h3>
         <div class="">{name}</div>
         <div class="">{sku}</div>
-        <div class="">{price}</div>
+        <div class="">${price}</div>
     </div>
 
     <div class="">

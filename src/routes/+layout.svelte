@@ -22,7 +22,7 @@
 	$: dir = rtl ? 'rtl' : 'ltr';
 </script>
 
-<div>
+<div dir={getDir(rtl)}>
 	<div class="mx-auto max-w-screen-lg px-6 py-12">
 		<div class="col-start-2">
 			<!-- Here you can place your Navigation -->
@@ -31,7 +31,7 @@
 
 			<button on:click={toggleRTL}>Toggle RTL</button>
 
-			<div class="grid gap-6" dir={getDir(rtl)}>
+			<div class="grid gap-6">
 				<Header />
 
 				<slot />
