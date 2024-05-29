@@ -20,7 +20,7 @@ export async function load({ params }) {
 
     } catch (err) {
 
-        throw error(404)
+        error(404);
 
     }
 
