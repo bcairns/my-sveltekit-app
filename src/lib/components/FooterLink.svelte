@@ -2,4 +2,4 @@
     export let href;
 </script>
 
-<a {href} class="hover:underline"><slot /></a>
+<a {href} class="hover:underline font-bold"><slot /></a>

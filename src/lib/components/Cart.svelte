@@ -1,18 +1,19 @@
 <script>
     import { fly } from 'svelte/transition';
 
-    import { cartItems } from '../stores/cartItems';
-    import { cartOpen } from '../stores/cartOpen';
     import CartItem from './CartItem.svelte';
     import Backdrop from "./Backdrop.svelte";
     import { focusTrap } from "../actions/focusTrap";
+    import {getContext} from "svelte";
+
+    const cart = getContext('cart');
 
     function close() {
-        $cartOpen = false;
+        cart.close();
     }
 </script>
 
-{#if $cartOpen}
+{#if cart.isOpen()}
     <Backdrop />
 
     <div use:focusTrap={{onDeactivate: close}} transition:fly={{ x: "100%" }} class="fixed top-0 right-0 w-[350px] bg-white h-full border-l">
@@ -26,7 +27,7 @@
 
         <div class="p-3 grid gap-3">
 
-            {#each Object.values($cartItems) as item}
+            {#each Object.values(cart.items()) as item}
                 <CartItem {...item} />
             {/each}
 

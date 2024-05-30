@@ -1,12 +1,14 @@
 <script>
     import ProductImage from './ProductImage.svelte';
-    import {removeFromCart} from '../stores/cartItems';
+    import {getContext} from "svelte";
 
     export let hex;
     export let name;
     export let price;
     export let sku;
     export let title;
+
+    const cart = getContext('cart');
 </script>
 
 <div class="flex gap-2 justify-between">
@@ -23,7 +25,7 @@
     </div>
 
     <div class="">
-        <button on:click={() => removeFromCart(sku)}>
+        <button on:click={() => cart.remove(sku)}>
             <iconify-icon class="text-24" icon="ph:trash-bold"></iconify-icon>
         </button>
     </div>

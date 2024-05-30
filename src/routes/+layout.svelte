@@ -6,6 +6,11 @@
 	import Header from '../lib/components/Header.svelte';
 	import Cart from '../lib/components/Cart.svelte';
 
+	import {createCart} from "$lib/stores/cart.svelte.js";
+
+	const cart = createCart();
+
+	setContext('cart', cart);
 	setContext('site.title', 'Logitech');
 
 	let rtl = false;

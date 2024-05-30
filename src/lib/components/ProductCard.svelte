@@ -1,10 +1,12 @@
 <script>
     import ColorSwatch from './ColorSwatch.svelte';
     import ProductImage from './ProductImage.svelte';
-    import {addToCart} from '../stores/cartItems';
+    import {getContext} from "svelte";
 
     export let title;
     export let variants;
+
+    const cart = getContext('cart');
 
     let selectedVariantIndex = 0;
     let selectedVariant;
@@ -14,7 +16,7 @@
     }
 
     function addToCartClicked() {
-        addToCart(title, selectedVariant);
+        cart.add(title, selectedVariant);
     }
 
     $: selectedVariant = variants[selectedVariantIndex];
