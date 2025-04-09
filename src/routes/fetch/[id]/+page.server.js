@@ -20,6 +20,8 @@ export async function load({ params }) {
 
     } catch (err) {
 
+        console.error('Error fetchng: ' + `https://jsonplaceholder.typicode.com/posts/${id}`, err);
+
         error(404);
 
     }

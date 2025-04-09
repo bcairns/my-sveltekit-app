@@ -1,19 +1,22 @@
-<script>
-    import ProductCard from '../../lib/components/ProductCard.svelte';
+<script lang="ts">
+	import ProductCard from '../../lib/components/ProductCard.svelte';
 
-    export let data;
+	interface Props {
+		data: any;
+	}
+
+	let { data }: Props = $props();
 </script>
 
 <main class="grid gap-6 md:[grid-template-columns:250px_auto]">
-    <div class="border p-6">Filters</div>
-    <div class="border p-6">
-        <h1>Products</h1>
+	<div class="border p-6">Filters</div>
+	<div class="border p-6">
+		<h1>Products</h1>
 
-        <div class="grid gap-6 grid-cols-2 lg:grid-cols-3">
-            {#each data.products as product}
-                <ProductCard {...product} />
-            {/each}
-        </div>
-
-    </div>
+		<div class="grid gap-6 grid-cols-2 lg:grid-cols-3">
+			{#each data.products as product}
+				<ProductCard {...product} />
+			{/each}
+		</div>
+	</div>
 </main>

@@ -1,46 +1,45 @@
-<script>
-    import ColorSwatch from './ColorSwatch.svelte';
-    import ProductImage from './ProductImage.svelte';
-    import {getContext} from "svelte";
+<script lang="ts">
+	import ColorSwatch from './ColorSwatch.svelte';
+	import ProductImage from './ProductImage.svelte';
+	import { getContext } from 'svelte';
 
-    export let title;
-    export let variants;
+	interface Props {
+		title: any;
+		variants: any;
+	}
+	let { title, variants }: Props = $props();
 
-    const cart = getContext('cart');
+	const cart = getContext('cart');
 
-    let selectedVariantIndex = 0;
-    let selectedVariant;
+	let selectedVariantIndex = $state(0);
+	let selectedVariant = $derived(variants[selectedVariantIndex]);
 
-    function swatchClicked(index) {
-        selectedVariantIndex = index;
-    }
+	function swatchClicked(index) {
+		selectedVariantIndex = index;
+	}
 
-    function addToCartClicked() {
-        cart.add(title, selectedVariant);
-    }
-
-    $: selectedVariant = variants[selectedVariantIndex];
+	function addToCartClicked() {
+		cart.add(title, selectedVariant);
+	}
 </script>
 
 <div class="border p-3 grid gap-2">
+	<ProductImage hex={selectedVariant.hex} />
 
-    <ProductImage hex={selectedVariant.hex} />
+	<div class="font-bold">{title}</div>
 
-    <div class="font-bold">{title}</div>
+	<div class="flex gap-2">
+		{#each variants as variant, index}
+			<ColorSwatch
+				onclick={() => swatchClicked(index)}
+				hex={variant.hex}
+				selected={index === selectedVariantIndex}
+			/>
+		{/each}
+	</div>
 
-    <div class="flex gap-2">
-        {#each variants as variant, index}
-            <ColorSwatch
-                    on:click={() => swatchClicked(index)}
-                    hex={variant.hex}
-                    selected={index === selectedVariantIndex}
-            />
-        {/each}
-    </div>
-
-    <div class="">${selectedVariant.price}</div>
-    <div class="">
-        <button on:click={addToCartClicked}
-                class="bg-black text-white p-2">Add to Cart</button>
-    </div>
+	<div class="">${selectedVariant.price}</div>
+	<div class="">
+		<button onclick={addToCartClicked} class="bg-black text-white p-2">Add to Cart</button>
+	</div>
 </div>

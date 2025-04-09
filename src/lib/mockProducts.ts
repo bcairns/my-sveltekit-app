@@ -1,4 +1,6 @@
-export const mockProducts = [
+import type {Product} from "$lib/types/Product";
+
+export const mockProducts: Product[] = [
     {
         'title': 'Product A',
         'variants': [

@@ -1,7 +1,9 @@
-<script>
-    export let data;
+<script lang="ts">
+	interface Props {
+		data: any;
+	}
+
+	let { data }: Props = $props();
 </script>
 
-[...] path handler!
-
-Path: {data.path}
+[...] path handler! Path: {data.path}

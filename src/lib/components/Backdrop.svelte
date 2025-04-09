@@ -1,8 +1,7 @@
 <script>
     import { fade } from 'svelte/transition';
-    import {onMount} from "svelte";
 
-    onMount(() => {
+    $effect(() => {
         document.body.style.overflowY = 'hidden';
 
         return () => {

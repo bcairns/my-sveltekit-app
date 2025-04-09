@@ -1,5 +1,17 @@
-import { persisted } from 'svelte-persisted-store'
-import {writable} from 'svelte/store';
+import { writable } from 'svelte/store';
 
+function createCartOpenStore() {
+    const { subscribe, set, update } = writable(false);
 
-export const cartOpen = persisted('cart.open', false, {storage: 'session'});
+    const open = () => set(true);
+    const close = () => set(false);
+    const toggle = () => update(isOpen => !isOpen);
+
+    return {
+        subscribe,
+        open,
+        close,
+        toggle
+}
+
+export const cartOpen = createCartOpenStore();
