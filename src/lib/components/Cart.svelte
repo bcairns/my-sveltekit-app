@@ -33,11 +33,5 @@
 				<CartItem {...item} />
 			{/each}
 		</div>
-
-		<hr>
-
-		<div class="p-3 font-bold">
-			TOTAL: ${cart.totalPrice()}
-		</div>
 	</div>
 {/if}
